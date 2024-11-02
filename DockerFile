@@ -1,6 +1,3 @@
-
-pip install opencv-python flask flask[async] Pillow torch torchvision pydantic githubkit tqdm
-
 # 使用官方 Python 3 镜像
 FROM python:3.10
 
