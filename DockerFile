@@ -1,10 +1,20 @@
 # 使用官方 Python 3 镜像
 FROM python:3.10
 
+# 复制代理环境变量
+ARG HTTP_PROXY
+ARG HTTPS_PROXY
+ARG NO_PROXY
+
+ENV HTTP_PROXY=${HTTP_PROXY}
+ENV HTTPS_PROXY=${HTTPS_PROXY}
+ENV NO_PROXY=${NO_PROXY}
+
 # 设置工作目录
 WORKDIR /app/nailongremove_http_api
 
 # 安装必要的包
+RUN pip install --upgrade pip
 RUN pip install --no-cache-dir opencv-python flask flask[async] Pillow torch torchvision pydantic githubkit tqdm
 
 # 复制当前目录下的所有文件到容器中
@@ -12,7 +22,7 @@ COPY . /app
 
 
 # 暴露应用运行的端口（如果需要）
-# EXPOSE 8081
+EXPOSE 8081
 
 # 运行应用
 CMD ["python", "-m", "nailongremove_http_api.http"]
