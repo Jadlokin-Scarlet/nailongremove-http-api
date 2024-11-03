@@ -2,13 +2,11 @@
 FROM python:3.10
 
 # 复制代理环境变量
-ARG HTTP_PROXY
-ARG HTTPS_PROXY
-ARG NO_PROXY
+ARG http_proxy
+ARG https_proxy
 
-ENV HTTP_PROXY=${HTTP_PROXY}
-ENV HTTPS_PROXY=${HTTPS_PROXY}
-ENV NO_PROXY=${NO_PROXY}
+ENV HTTP_PROXY=${http_proxy}
+ENV HTTPS_PROXY=${https_proxy}
 
 # 设置工作目录
 WORKDIR /app/nailongremove_http_api
