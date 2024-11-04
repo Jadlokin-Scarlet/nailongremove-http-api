@@ -7,8 +7,8 @@ RUN pip install pysocks
 ARG _http_proxy
 ARG _https_proxy
 
-ENV HTTP_PROXY=${http_proxy}
-ENV HTTPS_PROXY=${https_proxy}
+ENV HTTP_PROXY=${_http_proxy}
+ENV HTTPS_PROXY=${_https_proxy}
 
 # 安装必要的包
 RUN pip install --upgrade pip
