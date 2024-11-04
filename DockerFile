@@ -7,12 +7,14 @@ RUN pip install pysocks
 ARG _http_proxy
 ARG _https_proxy
 
-ENV HTTP_PROXY=${_http_proxy}
-ENV HTTPS_PROXY=${_https_proxy}
+ARG http_proxy=${_http_proxy}
+ARG https_proxy=${_https_proxy}
 
 # 安装必要的包
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir requests opencv-python-headless flask flask[async] Pillow torch torchvision pydantic githubkit tqdm httpx[socks]
+
+
 
 # 设置工作目录
 WORKDIR /app
