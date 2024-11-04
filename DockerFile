@@ -15,7 +15,8 @@ WORKDIR /app
 
 # 安装必要的包
 RUN pip install --upgrade pip
-RUN pip install --no-cache-dir requests opencv-python-headless flask flask[async] Pillow torch torchvision pydantic githubkit tqdm httpx[socks]
+RUN pip install --no-cache-dir opencv-python flask flask[async] Pillow torch torchvision pydantic githubkit tqdm
+RUN pip install --no-cache-dir requests opencv-python-headless httpx[socks]
 
 # 复制当前目录下的所有文件到容器中
 COPY . /app
