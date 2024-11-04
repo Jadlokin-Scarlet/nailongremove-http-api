@@ -17,7 +17,7 @@ RUN pip install --no-cache-dir requests opencv-python-headless flask flask[async
 
 
 # 设置工作目录
-WORKDIR /app
+WORKDIR /app/nailongremove_http_api
 
 # 复制当前目录下的所有文件到容器中
 COPY . /app
