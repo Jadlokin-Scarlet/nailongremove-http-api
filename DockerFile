@@ -19,6 +19,7 @@ WORKDIR /app/nailongremove_http_api
 
 # 复制当前目录下的所有文件到容器中
 COPY . /app
+COPY pytorch_vision_v1.10.0 /root/.cache/torch/hub/
 RUN echo -e 'PROXY=${_http_proxy}' > .env
 
 # 暴露应用运行的端口（如果需要）

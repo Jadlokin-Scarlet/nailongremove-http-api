@@ -21,7 +21,11 @@ model_path = GitHubRepoModelUpdater(
 cuda_available = torch.cuda.is_available()
 device = torch.device("cuda" if cuda_available else "cpu")
 transform = transforms.Compose([transforms.ToTensor()])
-model: Any = torch.hub.load("pytorch/vision:v0.10.0", "resnet50", weights=None)
+# model: Any = torch.hub.load("pytorch/vision:v0.10.0", "resnet50", weights=None)
+model: Any = torch.hub.load("/root/.cache/torch/hub/pytorch_vision_v0.10.0",
+                            "resnet50",
+                            weights=None,
+                            source="local")
 model.fc = nn.Linear(model.fc.in_features, 2)  # 修改最后一层为分类层
 model.load_state_dict(
     torch.load(model_path, weights_only=True, map_location=device),
