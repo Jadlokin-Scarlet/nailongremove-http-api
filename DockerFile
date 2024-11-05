@@ -5,12 +5,9 @@ RUN pip install pysocks
 
 # 复制代理环境变量
 ARG _http_proxy
-ARG _https_proxy
 
 ARG http_proxy=${_http_proxy}
-ARG https_proxy=${_https_proxy}
-ENV http_proxy=${_http_proxy}
-ENV https_proxy=${_https_proxy}
+ARG https_proxy=${_http_proxy}
 
 # 安装必要的包
 RUN pip install --upgrade pip
@@ -31,4 +28,4 @@ EXPOSE 8081
 # 运行应用
 CMD ["python", "-m", "http_main"]
 
-# docker build -f DockerFile --build-arg _http_proxy=${http_proxy} --build-arg _https_proxy=${https_proxy} -t nailongremove-http-api .
+# docker build -f DockerFile --build-arg _http_proxy=${http_proxy} -t nailongremove-http-api .
