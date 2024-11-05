@@ -15,7 +15,7 @@ ENV https_proxy=${_https_proxy}
 # 安装必要的包
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir requests opencv-python-headless flask flask[async] Pillow torch torchvision pydantic githubkit tqdm httpx[socks]
-
+RUN pip install --no-cache-dir python-dotenv
 
 
 # 设置工作目录
@@ -23,7 +23,7 @@ WORKDIR /app/nailongremove_http_api
 
 # 复制当前目录下的所有文件到容器中
 COPY . /app
-
+RUN echo -e 'PROXY=${_http_proxy}' > .env
 
 # 暴露应用运行的端口（如果需要）
 EXPOSE 8081

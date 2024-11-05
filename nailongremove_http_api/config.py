@@ -2,9 +2,8 @@ from enum import Enum
 from pathlib import Path
 from typing import List, Optional, Tuple
 
+from nonebot import get_plugin_config
 from pydantic import BaseModel, Field
-
-MODEL_BASE_URL = "https://github.com/Refound-445/nonebot-plugin-nailongremove/releases/download/weights"
 
 
 class ModelType(int, Enum):
@@ -42,4 +41,4 @@ class Config(BaseModel):
     nailong_github_token: Optional[str] = None
 
 
-config = Config()
+config = get_plugin_config(Config)
