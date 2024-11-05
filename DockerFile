@@ -20,6 +20,8 @@ WORKDIR /app/nailongremove_http_api
 # 复制当前目录下的所有文件到容器中
 COPY . /app
 RUN echo -e 'PROXY=${_http_proxy}' > .env
+ENV http_proxy=${_http_proxy}
+ENV https_proxy=${_http_proxy}
 
 # 暴露应用运行的端口（如果需要）
 EXPOSE 8081
